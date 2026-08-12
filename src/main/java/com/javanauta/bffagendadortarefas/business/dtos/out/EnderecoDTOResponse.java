@@ -1,4 +1,4 @@
-package com.javanauta.bffagendadortarefas.business.dtos;
+package com.javanauta.bffagendadortarefas.business.dtos.out;
 
 import lombok.*;
 
@@ -7,7 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class EnderecoDTO {
+public class EnderecoDTOResponse {
     private Long id;
     private String estado;
     private String cidade;
