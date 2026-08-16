@@ -7,6 +7,7 @@ import com.javanauta.bffagendadortarefas.business.dtos.in.UsuarioDTORequest;
 import com.javanauta.bffagendadortarefas.business.dtos.out.EnderecoDTOResponse;
 import com.javanauta.bffagendadortarefas.business.dtos.out.TelefoneDTOResponse;
 import com.javanauta.bffagendadortarefas.business.dtos.out.UsuarioDTOResponse;
+import com.javanauta.bffagendadortarefas.business.dtos.out.ViaCepDTOResponse;
 import com.javanauta.bffagendadortarefas.infrastructure.client.UsuarioClient;
 
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,11 @@ public class UsuarioService {
     // Método para realizar o Login do Usuário
     public String loginUsuario(LoginDTORequest loginDTO) {
         return usuarioClient.loginUsuario(loginDTO);
+    }
+
+    // Método para buscar os Dados de um Endereço através do CEP
+    public ViaCepDTOResponse buscarDadosEndereco(String cep) {
+        return usuarioClient.buscarDadosCEP(cep);
     }
 
     // Buscar um Usuário pelo Email utilizando o Método "findByEmail" de UsuarioRepository
