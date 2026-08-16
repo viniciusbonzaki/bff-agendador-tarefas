@@ -8,6 +8,7 @@ import com.javanauta.bffagendadortarefas.business.dtos.in.UsuarioDTORequest;
 import com.javanauta.bffagendadortarefas.business.dtos.out.EnderecoDTOResponse;
 import com.javanauta.bffagendadortarefas.business.dtos.out.TelefoneDTOResponse;
 import com.javanauta.bffagendadortarefas.business.dtos.out.UsuarioDTOResponse;
+import com.javanauta.bffagendadortarefas.business.dtos.out.ViaCepDTOResponse;
 import com.javanauta.bffagendadortarefas.infrastructure.security.SecurityConfig;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -45,6 +46,15 @@ public class UsuarioController {
     @ApiResponse(responseCode = "500", description = "Erro de Servidor!")
     public String loginUsuario(@RequestBody LoginDTORequest loginDTO) {
         return usuarioService.loginUsuario(loginDTO);
+    }
+
+    @GetMapping("/endereco/{cep}")
+    @Operation(summary = "Coletar dados do Enderéco", description = "Coleta os dados de um Endereço através do CEP")
+    @ApiResponse(responseCode = "200", description = "Dados do Endereço coletados com Sucesso!")
+    @ApiResponse(responseCode = "400", description = "Formato do CEP é Inválido!")
+    @ApiResponse(responseCode = "500", description = "Erro de Servidor!")
+    public ResponseEntity<ViaCepDTOResponse> buscarDadosCEP(@PathVariable("cep") String cep) {
+        return ResponseEntity.ok(usuarioService.buscarDadosEndereco(cep));
     }
 
     @GetMapping

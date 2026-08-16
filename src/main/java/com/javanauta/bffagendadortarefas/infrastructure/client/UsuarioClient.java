@@ -7,6 +7,7 @@ import com.javanauta.bffagendadortarefas.business.dtos.in.UsuarioDTORequest;
 import com.javanauta.bffagendadortarefas.business.dtos.out.EnderecoDTOResponse;
 import com.javanauta.bffagendadortarefas.business.dtos.out.TelefoneDTOResponse;
 import com.javanauta.bffagendadortarefas.business.dtos.out.UsuarioDTOResponse;
+import com.javanauta.bffagendadortarefas.business.dtos.out.ViaCepDTOResponse;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,9 @@ public interface UsuarioClient {
 
     @PostMapping("/login")
     String loginUsuario(@RequestBody LoginDTORequest loginDTO);
+
+    @GetMapping("/endereco/{cep}")
+    ViaCepDTOResponse buscarDadosCEP(@PathVariable("cep") String cep);
 
     @GetMapping
     UsuarioDTOResponse buscarUsuarioPorEmail(@RequestParam("email") String email,
