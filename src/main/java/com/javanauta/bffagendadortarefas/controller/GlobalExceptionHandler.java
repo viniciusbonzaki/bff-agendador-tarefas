@@ -1,6 +1,7 @@
 package com.javanauta.bffagendadortarefas.controller;
 
 import com.javanauta.bffagendadortarefas.infrastructure.exceptions.ConflictException;
+import com.javanauta.bffagendadortarefas.infrastructure.exceptions.ErrorResponseReadException;
 import com.javanauta.bffagendadortarefas.infrastructure.exceptions.ResourceNotFoundException;
 import com.javanauta.bffagendadortarefas.infrastructure.exceptions.UnauthorizedException;
 
@@ -33,5 +34,10 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    // Tratar uma ErrorResponseReadException
+    public ResponseEntity<String> handleErrorResponseReadException(ErrorResponseReadException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
