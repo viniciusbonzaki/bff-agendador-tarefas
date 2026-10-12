@@ -53,11 +53,6 @@ public class CronService {
         log.info("Notificações Enviadas! Encerrando...");
     }
 
-    // Método para gerar um Token para o Usuário responsável pelo Cron
-    private String login(LoginDTORequest loginDTO) {
-        return usuarioService.loginUsuario(loginDTO);
-    }
-
     // Método para poder converter para um DTO para utilizar o Método de Login
     private LoginDTORequest converterParaLoginDTORequest() {
 
